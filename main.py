@@ -49,8 +49,8 @@ def get_weather(region):
         os.system("pause")
         sys.exit(1)
     else:
-    # 获取地区的location--id
-    location_id = response["HeWeather6"][0]["id"]
+        # 获取地区的location--id
+        location_id = response["HeWeather6"][0]["id"]
     weather_url = "https://free-api.heweather.com/s6/weather/forecast?location={}&key={}".format(location_id, key)
     response = get(weather_url, headers=headers).json()
     # 天气
