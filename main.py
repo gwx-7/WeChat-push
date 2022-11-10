@@ -38,20 +38,20 @@ def get_weather(region):
                       'AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36'
     }
     key = config["weather_key"]
-    region_url = "https://free-api.heweather.com/s6/weather/forecast?location={}&key={}".format(region, key)
+    region_url = "https://geoapi.qweather.com/v2/city/lookup?location={}&key={}".format(region, key)
     response = get(region_url, headers=headers).json()
     print(response)
    
     # 获取地区的location--id
-    location_id = response['HeWeather6'][0]["basic"]["cid"]
-    weather_url = "https://free-api.heweather.com/s6/weather/forecast?location={}&key={}".format(location_id, key)
+    location_id = response["location"][0]["id"]
+    weather_url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format(location_id, key)
     response = get(weather_url, headers=headers).json()
     # 天气
-    weather = '白天'+response['HeWeather6'][0]["daily_forecast"][0]["cond_txt_d"]+'，'+'傍晚'+response['HeWeather6'][0]["daily_forecast"][0]["cond_txt_n"]
+    weather = '白天'+response["location"][0]["daily_forecast"][0]["cond_txt_d"]+'，'+'傍晚'+response["location"][0]["daily_forecast"][0]["cond_txt_n"]
     # 当前温度
-    temp = response['HeWeather6'][0]["daily_forecast"][0]["tmp_min"]+ u"\N{DEGREE SIGN}" + "C"+'—'+response['HeWeather6'][0]["daily_forecast"][0]["tmp_max"]+ u"\N{DEGREE SIGN}" + "C"
+    temp = response["location"][0]["daily_forecast"][0]["tmp_min"]+ u"\N{DEGREE SIGN}" + "C"+'—'+response["location"][0]["daily_forecast"][0]["tmp_max"]+ u"\N{DEGREE SIGN}" + "C"
     # 风向
-    wind_dir = response['HeWeather6'][0]["daily_forecast"][0]["wind_dir"]
+    wind_dir = response["location"][0]["daily_forecast"][0]["wind_dir"]
     return weather, temp, wind_dir
  
  
