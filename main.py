@@ -40,15 +40,8 @@ def get_weather(region):
     key = config["weather_key"]
     region_url = "https://free-api.heweather.com/s6/weather/forecast?location={}&key={}".format(region, key)
     response = get(region_url, headers=headers).json()
-    if response["code"] == "404":
-        print("推送消息失败，请检查地区名是否有误！")
-        os.system("pause")
-        sys.exit(1)
-    elif response["code"] == "401":
-        print("推送消息失败，请检查和风天气key是否正确！")
-        os.system("pause")
-        sys.exit(1)
-    else:
+    print(response)
+   
         # 获取地区的location--id
         location_id = response['HeWeather6'][0]["basic"]["cid"]
     weather_url = "https://free-api.heweather.com/s6/weather/forecast?location={}&key={}".format(location_id, key)
