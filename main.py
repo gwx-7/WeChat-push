@@ -43,15 +43,15 @@ def get_weather(region):
     print(response)
    
     # 获取地区的location--id
-    location_id = response["location"][0]["id"]
+    location_id = response['location'][0]["id"]
     weather_url = "https://devapi.qweather.com/v7/weather/now?location={}&key={}".format(location_id, key)
     response = get(weather_url, headers=headers).json()
     # 天气
-    weather = '白天'+response["location"][0]["daily_forecast"][0]["cond_txt_d"]+'，'+'傍晚'+response["location"][0]["daily_forecast"][0]["cond_txt_n"]
+    weather = '白天'+response['location'][0]["daily_forecast"][0]["cond_txt_d"]+'，'+'傍晚'+response['location'][0]["daily_forecast"][0]["cond_txt_n"]
     # 当前温度
-    temp = response["location"][0]["daily_forecast"][0]["tmp_min"]+ u"\N{DEGREE SIGN}" + "C"+'—'+response["location"][0]["daily_forecast"][0]["tmp_max"]+ u"\N{DEGREE SIGN}" + "C"
+    temp = response['location'][0]["daily_forecast"][0]["tmp_min"]+ u"\N{DEGREE SIGN}" + "C"+'—'+response['location'][0]["daily_forecast"][0]["tmp_max"]+ u"\N{DEGREE SIGN}" + "C"
     # 风向
-    wind_dir = response["location"][0]["daily_forecast"][0]["wind_dir"]
+    wind_dir = response['location'][0]["daily_forecast"][0]["wind_dir"]
     return weather, temp, wind_dir
  
  
