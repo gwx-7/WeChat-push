@@ -62,14 +62,10 @@ def get_weather(region):
     wind_dir = response["now"]["windDir"]
  
     # 获取今日最高气温
-    high_temp = response["forecasts"][0]["high"]
+    high_temp_str= response["max_temp"]["high_temp_str"] + u"\N{DEGREE SIGN}" + "C"
 
     # 获取今日最低气温
-    low_temp = response["forecasts"][0]["low"]
-
-    # 格式化温度字符串
-    high_temp_str = f'{high_temp}\N{DEGREE SIGN}C'
-    low_temp_str = f'{low_temp}\N{DEGREE SIGN}C'
+    low_temp_str= response["min_temp"]["low_temp_str"] + u"\N{DEGREE SIGN}" + "C"
 
   
  
