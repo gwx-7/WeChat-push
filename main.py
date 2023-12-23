@@ -59,9 +59,10 @@ def get_weather(region):
     temp = response["now"]["temp"] + u"\N{DEGREE SIGN}" + "C"
     # 风向
     wind_dir = response["now"]["windDir"]
-  
+    return weather, temp, wind_dir
  
-
+ 
+ 
 def get_ciba():
     url = "http://open.iciba.com/dsapi/"
     headers = {
@@ -75,7 +76,7 @@ def get_ciba():
     return note_ch, note_en
  
  
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir ,note_ch, note_en):
+def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
@@ -110,9 +111,6 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir ,no
                 "value": wind_dir,
                 "color": get_color()
             },
-           
-         
-            
             "note_en": {
                 "value": note_en,
                 "color": get_color()
@@ -161,7 +159,7 @@ if __name__ == "__main__":
     users = config["user"]
     # 传入地区获取天气信息
     region = config["region"]
-    weather, temp, wind_dir = get_weather(region), 
+    weather, temp, wind_dir = get_weather(region)
     note_ch = config["note_ch"]
     note_en = config["note_en"]
     if note_ch == "" and note_en == "":
