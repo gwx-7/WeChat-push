@@ -87,7 +87,7 @@ def get_ciba():
     return note_ch, note_en
  
  
-def send_message(to_user, access_token, region_name, weather, temp, wind_dir, note_ch, note_en):
+def send_message(to_user, access_token, region_name, weather, temp, wind_dir,  high_temp_str， low_temp_str，note_ch, note_en):
     url = "https://api.weixin.qq.com/cgi-bin/message/template/send?access_token={}".format(access_token)
     week_list = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"]
     year = localtime().tm_year
@@ -122,6 +122,16 @@ def send_message(to_user, access_token, region_name, weather, temp, wind_dir, no
                 "value": wind_dir,
                 "color": get_color()
             },
+           "high_temp_str": {
+                "value": high_temp_str,
+                "color": get_color()
+            },
+            "low_temp_str": {
+                "value": low_temp_str,
+                "color": get_color()
+            },
+         
+            
             "note_en": {
                 "value": note_en,
                 "color": get_color()
