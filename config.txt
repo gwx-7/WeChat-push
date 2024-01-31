@@ -8,7 +8,13 @@
 "template_id": "M6vel9UNXI9gNNSSVfK91yhwib9yne74MSTQJonT2Yk",
 # 接收公众号消息的微信号，如果有多个，需要在[]里用英文逗号间隔，例如["weixin1", "weixin2"]
 "user": ["oBsTp56Hcs4bLP6qGObxqSg_a2b0"],
- 
+
+# 信息配置
+# 和风天气apikey
+"weather_key": "07ae558c56a746c0baae1fa34e29c8e0",
+# 所在地区，可为省，城市，区，县，同时支持国外城市，例如伦敦
+"region": "镇江",
+
 # 信息配置
 # 和风天气apikey
 "weather_key": "07ae558c56a746c0baae1fa34e29c8e0",
